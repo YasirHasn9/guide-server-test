@@ -7,7 +7,7 @@ const server = express();
 server.use(express.json());
 
 server.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+  res.status(201).json({ api: "up" });
 });
 
 server.get("/hobbits", async (req, res, next) => {
@@ -20,7 +20,7 @@ server.get("/hobbits", async (req, res, next) => {
   //   });
   try {
     const hs = await Hobbits.getAll();
-    res.json(hs);
+    res.status(200).json(hs);
   } catch (error) {
     console.log(Error);
     next(error);
